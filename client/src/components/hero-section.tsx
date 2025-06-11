@@ -16,59 +16,57 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="pt-20 pb-16 bg-gradient-to-b from-gray-50 to-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-8">
-            <div className="space-y-4">
-              <h2 className="text-5xl lg:text-6xl font-bold text-black leading-tight">
-                Votre chauffeur privé
-                <span className="broski-medium"> de confiance</span>
-              </h2>
-              <p className="text-xl broski-medium leading-relaxed">
-                Service premium de transport avec chauffeur. Ponctualité, confort et discrétion garantis pour tous vos déplacements.
-              </p>
-            </div>
-            
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button 
-                onClick={scrollToBooking}
-                className="bg-black text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-800 transition-all duration-200 shadow-lg hover:shadow-xl h-auto"
-              >
-                Réserver maintenant
-              </Button>
-              <Button 
-                variant="outline"
-                onClick={scrollToPricing}
-                className="border-2 border-gray-800 text-gray-800 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-800 hover:text-white transition-all duration-200 h-auto"
-              >
-                Voir les tarifs
-              </Button>
-            </div>
-            
-            <div className="grid grid-cols-3 gap-8 pt-8">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-black">24/7</div>
-                <div className="text-sm broski-medium font-medium">Disponible</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-black">5★</div>
-                <div className="text-sm broski-medium font-medium">Note moyenne</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-black">500+</div>
-                <div className="text-sm broski-medium font-medium">Clients satisfaits</div>
-              </div>
-            </div>
+    <section 
+      className="min-h-screen flex items-center justify-center relative bg-cover bg-center bg-no-repeat"
+      style={{
+        backgroundImage: `url('https://images.unsplash.com/photo-1652455469144-62ec9fa6da2d?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')`
+      }}
+    >
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-black/60"></div>
+      
+      {/* Content */}
+      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="space-y-8">
+          <div className="space-y-6">
+            <h2 className="text-5xl lg:text-7xl font-bold text-white leading-tight">
+              Votre chauffeur privé
+              <span className="text-gray-300"> de confiance</span>
+            </h2>
+            <p className="text-xl lg:text-2xl text-gray-200 leading-relaxed max-w-3xl mx-auto">
+              Service premium de transport avec chauffeur. Ponctualité, confort et discrétion garantis pour tous vos déplacements.
+            </p>
           </div>
           
-          <div className="relative">
-            <img 
-              src="https://images.unsplash.com/photo-1563720223185-11003d516935?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
-              alt="Luxury sedan car" 
-              className="rounded-2xl shadow-2xl w-full h-auto" 
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl"></div>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <Button 
+              onClick={scrollToBooking}
+              className="bg-white text-black px-10 py-5 rounded-xl font-semibold text-lg hover:bg-gray-100 transition-all duration-200 shadow-lg hover:shadow-xl h-auto"
+            >
+              Réserver maintenant
+            </Button>
+            <Button 
+              variant="outline"
+              onClick={scrollToPricing}
+              className="border-2 border-white text-white px-10 py-5 rounded-xl font-semibold text-lg hover:bg-white hover:text-black transition-all duration-200 h-auto"
+            >
+              Voir les tarifs
+            </Button>
+          </div>
+          
+          <div className="grid grid-cols-3 gap-8 pt-16 max-w-2xl mx-auto">
+            <div className="text-center">
+              <div className="text-4xl lg:text-5xl font-bold text-white">24/7</div>
+              <div className="text-sm text-gray-300 font-medium mt-2">Disponible</div>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl lg:text-5xl font-bold text-white">5★</div>
+              <div className="text-sm text-gray-300 font-medium mt-2">Note moyenne</div>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl lg:text-5xl font-bold text-white">500+</div>
+              <div className="text-sm text-gray-300 font-medium mt-2">Clients satisfaits</div>
+            </div>
           </div>
         </div>
       </div>
