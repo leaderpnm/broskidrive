@@ -25,11 +25,11 @@ export default function HeroSection() {
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-black/60"></div>
       {/* Content */}
-      <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8 flex items-center">
         <div className="max-w-5xl mx-auto">
           <div className="space-y-6 text-left">
             <div className="space-y-4">
-              <h2 className="text-3xl lg:text-5xl font-light text-white leading-tight">
+              <h2 className="text-3xl lg:text-5xl font-medium text-white leading-tight">
                 Votre chauffeur privé
                 <span className="text-gray-300"> de confiance</span>
               </h2>
