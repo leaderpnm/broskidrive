@@ -24,7 +24,6 @@ export default function HeroSection() {
     >
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-black/60"></div>
-      
       {/* Content */}
       <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
@@ -55,7 +54,7 @@ export default function HeroSection() {
               </Button>
             </div>
             
-            <div className="grid grid-cols-3 gap-8 pt-16 max-w-2xl">
+            <div className="grid grid-cols-3 gap-8 max-w-2xl pt-[0px] pb-[0px]">
               <div>
                 <div className="text-4xl lg:text-5xl font-bold text-white">24/7</div>
                 <div className="text-sm text-gray-300 font-medium mt-2">Disponible</div>
