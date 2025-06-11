@@ -48,7 +48,7 @@ export default function HeroSection() {
             <Button 
               variant="outline"
               onClick={scrollToPricing}
-              className="border-2 border-white text-white px-10 py-5 rounded-xl font-semibold text-lg hover:bg-white hover:text-black transition-all duration-200 h-auto"
+              className="border-2 border-white text-white bg-black/30 backdrop-blur-sm px-10 py-5 rounded-xl font-semibold text-lg hover:bg-white hover:text-black transition-all duration-200 h-auto"
             >
               Voir les tarifs
             </Button>
