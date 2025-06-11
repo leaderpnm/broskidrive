@@ -26,7 +26,7 @@ export default function Header() {
               <img 
                 src="https://i.ibb.co/WWtSCnVz/BROSKI-DRIVE.png" 
                 alt="Broski Drive" 
-                className="h-12 w-auto"
+                className="h-18 w-auto"
               />
             </div>
           </div>
