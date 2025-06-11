@@ -24,7 +24,7 @@ export default function Header() {
           <div className="flex items-center">
             <div className="flex-shrink-0">
               <img 
-                src="/attached_assets/BROSKI DRIVE_1749673369820.png" 
+                src="https://i.ibb.co/WWtSCnVz/BROSKI-DRIVE.png" 
                 alt="Broski Drive" 
                 className="h-12 w-auto"
               />
