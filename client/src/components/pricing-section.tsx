@@ -37,13 +37,13 @@ export default function PricingSection() {
               </CardContent>
             </Card>
             
-            <Card className="bg-white/10 backdrop-blur-md border border-white/20 shadow-lg">
+            <Card className="bg-black/30 backdrop-blur-md border border-black/40 shadow-lg">
               <CardContent className="p-6">
                 <div className="flex items-start">
                   <CheckCircle className="w-6 h-6 text-green-400 mr-3 mt-0.5" />
                   <div>
                     <h5 className="font-semibold text-white mb-1">Prix fixe garanti</h5>
-                    <p className="text-gray-300 text-sm">
+                    <p className="text-gray-200 text-sm">
                       Le prix calculé lors de votre réservation est définitif, même en cas d'embouteillages.
                     </p>
                   </div>
@@ -60,16 +60,16 @@ export default function PricingSection() {
             />
             
             <div className="absolute bottom-6 left-6 right-6">
-              <Card className="bg-white/10 backdrop-blur-md border border-white/20 shadow-lg">
+              <Card className="bg-black/30 backdrop-blur-md border border-black/40 shadow-lg">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between">
                     <div>
                       <h5 className="font-semibold text-white">Exemple de course</h5>
-                      <p className="text-sm text-gray-300">Aéroport → Centre-ville</p>
+                      <p className="text-sm text-gray-200">Aéroport → Centre-ville</p>
                     </div>
                     <div className="text-right">
                       <div className="text-2xl font-bold text-white">€ 45.60</div>
-                      <div className="text-sm text-gray-300">Prix fixe</div>
+                      <div className="text-sm text-gray-200">Prix fixe</div>
                     </div>
                   </div>
                 </CardContent>
