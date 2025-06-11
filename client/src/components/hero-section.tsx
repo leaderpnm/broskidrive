@@ -54,7 +54,7 @@ export default function HeroSection() {
               </Button>
             </div>
             
-            <div className="grid grid-cols-3 gap-6 pt-12 max-w-xl">
+            <div className="grid grid-cols-3 gap-6 max-w-xl pt-[0px] pb-[0px]">
               <div>
                 <div className="text-2xl lg:text-3xl font-semibold text-white">24/7</div>
                 <div className="text-xs text-gray-300 font-normal mt-1">Disponible</div>
