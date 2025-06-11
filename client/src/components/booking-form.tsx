@@ -22,7 +22,10 @@ interface RouteCalculation {
 }
 
 const timeSlots = [
-  "08:00", "10:00", "12:00", "14:00", "16:00", "18:00"
+  "00:00", "01:00", "02:00", "03:00", "04:00", "05:00",
+  "06:00", "07:00", "08:00", "09:00", "10:00", "11:00",
+  "12:00", "13:00", "14:00", "15:00", "16:00", "17:00",
+  "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"
 ];
 
 export default function BookingForm() {
@@ -144,7 +147,7 @@ export default function BookingForm() {
                 {/* Time Slots */}
                 <div>
                   <h5 className="font-semibold text-black mb-3">Créneaux disponibles</h5>
-                  <div className="grid grid-cols-3 gap-2">
+                  <div className="grid grid-cols-4 gap-2 max-h-96 overflow-y-auto">
                     {timeSlots.map((time) => (
                       <Button
                         key={time}
