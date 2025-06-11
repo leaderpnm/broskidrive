@@ -60,16 +60,16 @@ export default function PricingSection() {
             />
             
             <div className="absolute bottom-6 left-6 right-6">
-              <Card className="bg-white/95 backdrop-blur-sm shadow-lg">
+              <Card className="bg-white/10 backdrop-blur-md border border-white/20 shadow-lg">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <h5 className="font-semibold text-black">Exemple de course</h5>
-                      <p className="text-sm broski-medium">Aéroport → Centre-ville</p>
+                      <h5 className="font-semibold text-white">Exemple de course</h5>
+                      <p className="text-sm text-gray-300">Aéroport → Centre-ville</p>
                     </div>
                     <div className="text-right">
-                      <div className="text-2xl font-bold text-black">€ 45.60</div>
-                      <div className="text-sm broski-medium">Prix fixe</div>
+                      <div className="text-2xl font-bold text-white">€ 45.60</div>
+                      <div className="text-sm text-gray-300">Prix fixe</div>
                     </div>
                   </div>
                 </CardContent>
