@@ -27,7 +27,7 @@ export default function HeroSection() {
       {/* Content */}
       <div className="relative z-10 w-full pl-4 pr-4 sm:pl-6 sm:pr-6 lg:pl-8 lg:pr-8 flex items-center">
         <div className="max-w-7xl mx-auto w-full">
-          <div className="space-y-6 text-left">
+          <div className="space-y-6 text-left ml-0">
             <div className="space-y-4">
               <h2 className="text-3xl lg:text-5xl font-medium text-white leading-tight">
                 Votre chauffeur privé
