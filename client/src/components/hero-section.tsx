@@ -25,7 +25,7 @@ export default function HeroSection() {
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-black/60"></div>
       {/* Content */}
-      <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8 flex items-center">
+      <div className="relative z-10 w-full pl-4 pr-4 sm:pl-6 sm:pr-6 lg:pl-8 lg:pr-8 flex items-center">
         <div className="max-w-7xl mx-auto w-full">
           <div className="space-y-6 text-left">
             <div className="space-y-4">
