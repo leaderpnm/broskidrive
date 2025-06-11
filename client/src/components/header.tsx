@@ -23,7 +23,11 @@ export default function Header() {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <div className="flex-shrink-0">
-              <h1 className="text-2xl font-bold text-black">Broski Drive</h1>
+              <img 
+                src="/attached_assets/BROSKI DRIVE_1749673369820.png" 
+                alt="Broski Drive" 
+                className="h-12 w-auto"
+              />
             </div>
           </div>
           
