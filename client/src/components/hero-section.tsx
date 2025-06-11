@@ -17,7 +17,7 @@ export default function HeroSection() {
 
   return (
     <section 
-      className="min-h-screen flex items-center justify-center relative bg-cover bg-center bg-no-repeat"
+      className="min-h-screen flex items-center justify-center relative bg-cover bg-center bg-no-repeat pt-20"
       style={{
         backgroundImage: `url('https://images.unsplash.com/photo-1652455469144-62ec9fa6da2d?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')`
       }}
