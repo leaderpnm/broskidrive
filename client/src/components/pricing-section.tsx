@@ -37,13 +37,13 @@ export default function PricingSection() {
               </CardContent>
             </Card>
             
-            <Card className="bg-green-50 border border-green-200">
+            <Card className="bg-black border border-gray-800">
               <CardContent className="p-6">
                 <div className="flex items-start">
-                  <CheckCircle className="w-6 h-6 text-green-500 mr-3 mt-0.5" />
+                  <CheckCircle className="w-6 h-6 text-white mr-3 mt-0.5" />
                   <div>
-                    <h5 className="font-semibold text-green-800 mb-1">Prix fixe garanti</h5>
-                    <p className="text-green-700 text-sm">
+                    <h5 className="font-semibold text-white mb-1">Prix fixe garanti</h5>
+                    <p className="text-gray-300 text-sm">
                       Le prix calculé lors de votre réservation est définitif, même en cas d'embouteillages.
                     </p>
                   </div>
