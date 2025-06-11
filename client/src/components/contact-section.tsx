@@ -75,11 +75,11 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-16 bg-gray-900 text-white">
+    <section id="contact" className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h3 className="text-3xl font-bold mb-4">Contactez-nous</h3>
-          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+          <h3 className="text-3xl font-bold text-black mb-4">Contactez-nous</h3>
+          <p className="text-lg broski-medium max-w-2xl mx-auto">
             Une question ? Un besoin spécifique ? Nous sommes à votre écoute 24h/24
           </p>
         </div>
@@ -87,16 +87,16 @@ export default function ContactSection() {
         <div className="grid lg:grid-cols-2 gap-12">
           <div className="space-y-8">
             <div>
-              <h4 className="text-xl font-semibold mb-6">Informations de contact</h4>
+              <h4 className="text-xl font-semibold text-black mb-6">Informations de contact</h4>
               <div className="space-y-4">
                 {contactInfo.map((info, index) => {
                   const Icon = info.icon;
                   return (
                     <div key={index} className="flex items-center">
-                      <Icon className="w-6 h-6 text-gray-300 mr-4" />
+                      <Icon className="w-6 h-6 broski-medium mr-4" />
                       <div>
-                        <div className="font-medium">{info.title}</div>
-                        <div className="text-gray-300">{info.value}</div>
+                        <div className="font-medium text-black">{info.title}</div>
+                        <div className="broski-medium">{info.value}</div>
                       </div>
                     </div>
                   );
@@ -104,13 +104,13 @@ export default function ContactSection() {
               </div>
             </div>
             
-            <Card className="bg-gray-800 border-gray-700">
+            <Card className="bg-gray-50 border-gray-200">
               <CardContent className="p-6">
-                <h5 className="font-semibold mb-3">Réservation d'urgence</h5>
-                <p className="text-gray-300 text-sm mb-4">
+                <h5 className="font-semibold text-black mb-3">Réservation d'urgence</h5>
+                <p className="broski-medium text-sm mb-4">
                   Besoin d'un chauffeur immédiatement ? Appelez-nous directement pour une prise en charge rapide.
                 </p>
-                <Button className="bg-white text-black hover:bg-gray-100">
+                <Button className="bg-black text-white hover:bg-gray-800">
                   Appeler maintenant
                 </Button>
               </CardContent>
@@ -118,83 +118,83 @@ export default function ContactSection() {
           </div>
           
           <div>
-            <Card className="bg-gray-800 border-gray-700">
+            <Card className="bg-gray-50 border-gray-200">
               <CardContent className="p-8">
-                <h4 className="text-xl font-semibold mb-6">Envoyez-nous un message</h4>
+                <h4 className="text-xl font-semibold text-black mb-6">Envoyez-nous un message</h4>
                 
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
-                      <Label htmlFor="firstName" className="text-gray-300">Prénom</Label>
+                      <Label htmlFor="firstName" className="text-black">Prénom</Label>
                       <Input
                         id="firstName"
                         {...register("firstName")}
-                        className="mt-2 bg-gray-900 border-gray-600 text-white placeholder-gray-400 focus:ring-white focus:border-white"
+                        className="mt-2 bg-white border-gray-300 text-black placeholder-gray-500 focus:ring-black focus:border-black"
                         placeholder="Votre prénom"
                       />
                       {errors.firstName && (
-                        <p className="text-red-400 text-sm mt-1">{errors.firstName.message}</p>
+                        <p className="text-red-500 text-sm mt-1">{errors.firstName.message}</p>
                       )}
                     </div>
                     <div>
-                      <Label htmlFor="lastName" className="text-gray-300">Nom</Label>
+                      <Label htmlFor="lastName" className="text-black">Nom</Label>
                       <Input
                         id="lastName"
                         {...register("lastName")}
-                        className="mt-2 bg-gray-900 border-gray-600 text-white placeholder-gray-400 focus:ring-white focus:border-white"
+                        className="mt-2 bg-white border-gray-300 text-black placeholder-gray-500 focus:ring-black focus:border-black"
                         placeholder="Votre nom"
                       />
                       {errors.lastName && (
-                        <p className="text-red-400 text-sm mt-1">{errors.lastName.message}</p>
+                        <p className="text-red-500 text-sm mt-1">{errors.lastName.message}</p>
                       )}
                     </div>
                   </div>
                   
                   <div>
-                    <Label htmlFor="email" className="text-gray-300">Email</Label>
+                    <Label htmlFor="email" className="text-black">Email</Label>
                     <Input
                       id="email"
                       type="email"
                       {...register("email")}
-                      className="mt-2 bg-gray-900 border-gray-600 text-white placeholder-gray-400 focus:ring-white focus:border-white"
+                      className="mt-2 bg-white border-gray-300 text-black placeholder-gray-500 focus:ring-black focus:border-black"
                       placeholder="votre@email.com"
                     />
                     {errors.email && (
-                      <p className="text-red-400 text-sm mt-1">{errors.email.message}</p>
+                      <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
                     )}
                   </div>
                   
                   <div>
-                    <Label htmlFor="phone" className="text-gray-300">Téléphone</Label>
+                    <Label htmlFor="phone" className="text-black">Téléphone</Label>
                     <Input
                       id="phone"
                       {...register("phone")}
-                      className="mt-2 bg-gray-900 border-gray-600 text-white placeholder-gray-400 focus:ring-white focus:border-white"
+                      className="mt-2 bg-white border-gray-300 text-black placeholder-gray-500 focus:ring-black focus:border-black"
                       placeholder="+33 1 23 45 67 89"
                     />
                     {errors.phone && (
-                      <p className="text-red-400 text-sm mt-1">{errors.phone.message}</p>
+                      <p className="text-red-500 text-sm mt-1">{errors.phone.message}</p>
                     )}
                   </div>
                   
                   <div>
-                    <Label htmlFor="message" className="text-gray-300">Message</Label>
+                    <Label htmlFor="message" className="text-black">Message</Label>
                     <Textarea
                       id="message"
                       rows={4}
                       {...register("message")}
-                      className="mt-2 bg-gray-900 border-gray-600 text-white placeholder-gray-400 focus:ring-white focus:border-white"
+                      className="mt-2 bg-white border-gray-300 text-black placeholder-gray-500 focus:ring-black focus:border-black"
                       placeholder="Décrivez votre besoin..."
                     />
                     {errors.message && (
-                      <p className="text-red-400 text-sm mt-1">{errors.message.message}</p>
+                      <p className="text-red-500 text-sm mt-1">{errors.message.message}</p>
                     )}
                   </div>
                   
                   <Button
                     type="submit"
                     disabled={sendMessageMutation.isPending}
-                    className="w-full bg-white text-black hover:bg-gray-100 font-semibold py-4 h-auto"
+                    className="w-full bg-black text-white hover:bg-gray-800 font-semibold py-4 h-auto"
                   >
                     {sendMessageMutation.isPending ? "Envoi en cours..." : "Envoyer le message"}
                   </Button>
