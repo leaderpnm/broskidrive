@@ -26,46 +26,46 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-black/60"></div>
       {/* Content */}
       <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="space-y-8 text-left">
-            <div className="space-y-6">
-              <h2 className="text-5xl lg:text-7xl font-bold text-white leading-tight">
+        <div className="max-w-5xl mx-auto">
+          <div className="space-y-6 text-left">
+            <div className="space-y-4">
+              <h2 className="text-3xl lg:text-5xl font-light text-white leading-tight">
                 Votre chauffeur privé
                 <span className="text-gray-300"> de confiance</span>
               </h2>
-              <p className="text-xl lg:text-2xl text-gray-200 leading-relaxed max-w-3xl">
+              <p className="text-lg lg:text-xl text-gray-200 leading-relaxed max-w-2xl">
                 Service premium de transport avec chauffeur. Ponctualité, confort et discrétion garantis pour tous vos déplacements.
               </p>
             </div>
             
-            <div className="flex flex-col sm:flex-row gap-6">
+            <div className="flex flex-col sm:flex-row gap-4">
               <Button 
                 onClick={scrollToBooking}
-                className="bg-white text-black px-10 py-5 rounded-xl font-semibold text-lg hover:bg-gray-100 transition-all duration-200 shadow-lg hover:shadow-xl h-auto"
+                className="bg-white text-black px-8 py-3 rounded-lg font-medium text-base hover:bg-gray-100 transition-all duration-200 shadow-lg hover:shadow-xl h-auto"
               >
                 Réserver maintenant
               </Button>
               <Button 
                 variant="outline"
                 onClick={scrollToPricing}
-                className="border-2 border-white text-white bg-black/30 backdrop-blur-sm px-10 py-5 rounded-xl font-semibold text-lg hover:bg-white hover:text-black transition-all duration-200 h-auto"
+                className="border-2 border-white text-white bg-black/30 backdrop-blur-sm px-8 py-3 rounded-lg font-medium text-base hover:bg-white hover:text-black transition-all duration-200 h-auto"
               >
                 Voir les tarifs
               </Button>
             </div>
             
-            <div className="grid grid-cols-3 gap-8 max-w-2xl pt-[0px] pb-[0px]">
+            <div className="grid grid-cols-3 gap-6 pt-12 max-w-xl">
               <div>
-                <div className="text-4xl lg:text-5xl font-bold text-white">24/7</div>
-                <div className="text-sm text-gray-300 font-medium mt-2">Disponible</div>
+                <div className="text-2xl lg:text-3xl font-semibold text-white">24/7</div>
+                <div className="text-xs text-gray-300 font-normal mt-1">Disponible</div>
               </div>
               <div>
-                <div className="text-4xl lg:text-5xl font-bold text-white">5★</div>
-                <div className="text-sm text-gray-300 font-medium mt-2">Note moyenne</div>
+                <div className="text-2xl lg:text-3xl font-semibold text-white">5★</div>
+                <div className="text-xs text-gray-300 font-normal mt-1">Note moyenne</div>
               </div>
               <div>
-                <div className="text-4xl lg:text-5xl font-bold text-white">500+</div>
-                <div className="text-sm text-gray-300 font-medium mt-2">Clients satisfaits</div>
+                <div className="text-2xl lg:text-3xl font-semibold text-white">500+</div>
+                <div className="text-xs text-gray-300 font-normal mt-1">Clients satisfaits</div>
               </div>
             </div>
           </div>
