@@ -2,16 +2,15 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Calendar } from "@/components/ui/calendar";
 import { Card, CardContent } from "@/components/ui/card";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { insertBookingSchema } from "@shared/schema";
 import { z } from "zod";
 import { useToast } from "@/hooks/use-toast";
+import CalendlyWidget from "@/components/calendly-widget";
 
 type BookingFormData = z.infer<typeof insertBookingSchema>;
 
@@ -21,16 +20,7 @@ interface RouteCalculation {
   totalPrice: string;
 }
 
-const timeSlots = [
-  "00:00", "01:00", "02:00", "03:00", "04:00", "05:00",
-  "06:00", "07:00", "08:00", "09:00", "10:00", "11:00",
-  "12:00", "13:00", "14:00", "15:00", "16:00", "17:00",
-  "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"
-];
-
 export default function BookingForm() {
-  const [selectedDate, setSelectedDate] = useState<Date>();
-  const [selectedTime, setSelectedTime] = useState<string>("");
   const [routeCalculation, setRouteCalculation] = useState<RouteCalculation | null>(null);
   const { toast } = useToast();
 
@@ -82,8 +72,6 @@ export default function BookingForm() {
         description: "Votre réservation a été enregistrée avec succès.",
       });
       reset();
-      setSelectedDate(undefined);
-      setSelectedTime("");
       setRouteCalculation(null);
     },
     onError: () => {
@@ -96,22 +84,7 @@ export default function BookingForm() {
   });
 
   const onSubmit = (data: BookingFormData) => {
-    if (!selectedDate || !selectedTime) {
-      toast({
-        title: "Erreur",
-        description: "Veuillez sélectionner une date et une heure",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    const bookingData = {
-      ...data,
-      selectedDate: selectedDate.toISOString().split('T')[0],
-      selectedTime,
-    };
-
-    createBookingMutation.mutate(bookingData);
+    createBookingMutation.mutate(data);
   };
 
   const canCalculateRoute = startAddress && endAddress && startAddress.trim() !== "" && endAddress.trim() !== "";
@@ -127,42 +100,14 @@ export default function BookingForm() {
         <Card className="bg-gray-50 shadow-lg">
           <CardContent className="p-8">
             <div className="grid lg:grid-cols-2 gap-8">
-              {/* Calendar and Time Selection */}
+              {/* Calendly Widget */}
               <div className="space-y-6">
-                <h4 className="text-xl font-semibold text-black mb-4">Sélectionnez date et heure</h4>
-                
-                {/* Calendar */}
+                <h4 className="text-xl font-semibold text-black mb-4">Planifiez votre rendez-vous</h4>
                 <Card className="shadow-sm">
-                  <CardContent className="p-6">
-                    <Calendar
-                      mode="single"
-                      selected={selectedDate}
-                      onSelect={setSelectedDate}
-                      disabled={(date) => date < new Date()}
-                      className="rounded-md"
-                    />
+                  <CardContent className="p-2">
+                    <CalendlyWidget />
                   </CardContent>
                 </Card>
-                
-                {/* Time Slots */}
-                <div>
-                  <h5 className="font-semibold text-black mb-3">Créneaux disponibles</h5>
-                  <div className="grid grid-cols-4 gap-2 max-h-96 overflow-y-auto">
-                    {timeSlots.map((time) => (
-                      <Button
-                        key={time}
-                        variant={selectedTime === time ? "default" : "outline"}
-                        onClick={() => setSelectedTime(time)}
-                        className={selectedTime === time 
-                          ? "bg-black text-white" 
-                          : "border-gray-200 hover:border-black hover:bg-black hover:text-white"
-                        }
-                      >
-                        {time}
-                      </Button>
-                    ))}
-                  </div>
-                </div>
               </div>
               
               {/* Route Calculator and Booking Form */}
@@ -279,7 +224,7 @@ export default function BookingForm() {
                   
                   <Button
                     type="submit"
-                    disabled={createBookingMutation.isPending || !routeCalculation || !selectedDate || !selectedTime}
+                    disabled={createBookingMutation.isPending || !routeCalculation}
                     className="w-full bg-black text-white hover:bg-gray-800 font-semibold text-lg py-4 shadow-lg h-auto"
                   >
                     {createBookingMutation.isPending ? "Confirmation en cours..." : "Confirmer la réservation"}
