@@ -14,13 +14,6 @@ export const bookings = pgTable("bookings", {
   lastName: text("last_name").notNull(),
   email: text("email").notNull(),
   phone: text("phone").notNull(),
-  startAddress: text("start_address").notNull(),
-  endAddress: text("end_address").notNull(),
-  selectedDate: text("selected_date").notNull(),
-  selectedTime: text("selected_time").notNull(),
-  distance: decimal("distance", { precision: 10, scale: 2 }),
-  duration: integer("duration"), // in minutes
-  totalPrice: decimal("total_price", { precision: 10, scale: 2 }).notNull(),
   status: text("status").notNull().default("pending"), // pending, confirmed, completed, cancelled
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
@@ -49,10 +42,6 @@ export const insertBookingSchema = createInsertSchema(bookings).omit({
   lastName: z.string().min(1, "Nom requis"),
   email: z.string().email("Email invalide"),
   phone: z.string().min(10, "Numéro de téléphone requis"),
-  startAddress: z.string().min(1, "Adresse de départ requise"),
-  endAddress: z.string().min(1, "Adresse de destination requise"),
-  selectedDate: z.string().min(1, "Date requise"),
-  selectedTime: z.string().min(1, "Heure requise"),
 });
 
 export const insertContactMessageSchema = createInsertSchema(contactMessages).omit({

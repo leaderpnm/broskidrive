@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -14,51 +13,16 @@ import CalendlyWidget from "@/components/calendly-widget";
 
 type BookingFormData = z.infer<typeof insertBookingSchema>;
 
-interface RouteCalculation {
-  distance: number;
-  duration: number;
-  totalPrice: string;
-}
-
 export default function BookingForm() {
-  const [routeCalculation, setRouteCalculation] = useState<RouteCalculation | null>(null);
   const { toast } = useToast();
 
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
     reset,
   } = useForm<BookingFormData>({
     resolver: zodResolver(insertBookingSchema),
-  });
-
-  const startAddress = watch("startAddress");
-  const endAddress = watch("endAddress");
-
-  const calculateRouteMutation = useMutation({
-    mutationFn: async () => {
-      const response = await apiRequest("POST", "/api/calculate-route", {
-        startAddress,
-        endAddress,
-      });
-      return response.json();
-    },
-    onSuccess: (data: RouteCalculation) => {
-      setRouteCalculation(data);
-      toast({
-        title: "Trajet calculé",
-        description: `Distance: ${data.distance} km - Prix: €${data.totalPrice}`,
-      });
-    },
-    onError: () => {
-      toast({
-        title: "Erreur",
-        description: "Impossible de calculer le trajet",
-        variant: "destructive",
-      });
-    },
   });
 
   const createBookingMutation = useMutation({
@@ -72,7 +36,6 @@ export default function BookingForm() {
         description: "Votre réservation a été enregistrée avec succès.",
       });
       reset();
-      setRouteCalculation(null);
     },
     onError: () => {
       toast({
@@ -87,14 +50,12 @@ export default function BookingForm() {
     createBookingMutation.mutate(data);
   };
 
-  const canCalculateRoute = startAddress && endAddress && startAddress.trim() !== "" && endAddress.trim() !== "";
-
   return (
     <section id="reservation" className="py-16 bg-white">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h3 className="text-3xl font-bold text-black mb-4">Réservez votre course</h3>
-          <p className="text-lg broski-medium">Sélectionnez votre créneau et calculez le prix instantanément</p>
+          <h3 className="text-3xl font-bold text-black mb-4">Réservez votre rendez-vous</h3>
+          <p className="text-lg broski-medium">Planifiez facilement votre rendez-vous avec notre calendrier en ligne</p>
         </div>
         
         <Card className="bg-gray-50 shadow-lg">
@@ -110,9 +71,9 @@ export default function BookingForm() {
                 </Card>
               </div>
               
-              {/* Route Calculator and Booking Form */}
+              {/* Contact Form */}
               <div className="space-y-6">
-                <h4 className="text-xl font-semibold text-black mb-4">Calculateur de trajet</h4>
+                <h4 className="text-xl font-semibold text-black mb-4">Vos informations</h4>
                 
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                   <div className="grid grid-cols-2 gap-4">
@@ -165,66 +126,9 @@ export default function BookingForm() {
                     )}
                   </div>
                   
-                  <div>
-                    <Label htmlFor="startAddress">Point de départ</Label>
-                    <Input
-                      id="startAddress"
-                      placeholder="Adresse de départ"
-                      {...register("startAddress")}
-                      className="mt-1"
-                    />
-                    {errors.startAddress && (
-                      <p className="text-red-500 text-sm mt-1">{errors.startAddress.message}</p>
-                    )}
-                  </div>
-                  
-                  <div>
-                    <Label htmlFor="endAddress">Destination</Label>
-                    <Input
-                      id="endAddress"
-                      placeholder="Adresse de destination"
-                      {...register("endAddress")}
-                      className="mt-1"
-                    />
-                    {errors.endAddress && (
-                      <p className="text-red-500 text-sm mt-1">{errors.endAddress.message}</p>
-                    )}
-                  </div>
-                  
-                  <Button
-                    type="button"
-                    onClick={() => calculateRouteMutation.mutate()}
-                    disabled={!canCalculateRoute || calculateRouteMutation.isPending}
-                    className="w-full bg-gray-600 text-white hover:bg-gray-700"
-                  >
-                    {calculateRouteMutation.isPending ? "Calcul en cours..." : "Calculer le trajet"}
-                  </Button>
-                  
-                  {/* Results */}
-                  {routeCalculation && (
-                    <Card className="border-l-4 border-green-500">
-                      <CardContent className="p-6">
-                        <div className="space-y-3">
-                          <div className="flex justify-between items-center">
-                            <span className="text-sm font-medium broski-medium">Distance:</span>
-                            <span className="font-semibold text-black">{routeCalculation.distance} km</span>
-                          </div>
-                          <div className="flex justify-between items-center">
-                            <span className="text-sm font-medium broski-medium">Durée estimée:</span>
-                            <span className="font-semibold text-black">{routeCalculation.duration} min</span>
-                          </div>
-                          <div className="flex justify-between items-center text-lg">
-                            <span className="font-semibold text-black">Prix total:</span>
-                            <span className="font-bold text-black text-xl">€ {routeCalculation.totalPrice}</span>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  )}
-                  
                   <Button
                     type="submit"
-                    disabled={createBookingMutation.isPending || !routeCalculation}
+                    disabled={createBookingMutation.isPending}
                     className="w-full bg-black text-white hover:bg-gray-800 font-semibold text-lg py-4 shadow-lg h-auto"
                   >
                     {createBookingMutation.isPending ? "Confirmation en cours..." : "Confirmer la réservation"}

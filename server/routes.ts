@@ -4,58 +4,14 @@ import { storage } from "./storage";
 import { insertBookingSchema, insertContactMessageSchema } from "@shared/schema";
 import { z } from "zod";
 
-function calculatePrice(distance: number): number {
-  const BASE_PRICE = 8.00; // Prise en charge
-  const PRICE_PER_KM = 2.50;
-  return BASE_PRICE + (distance * PRICE_PER_KM);
-}
-
-function calculateDistance(startAddress: string, endAddress: string): { distance: number; duration: number } {
-  // Mock distance calculation - in production this would use Google Maps API
-  // For now, return a random distance between 5-50km and duration based on distance
-  const distance = Math.round((Math.random() * 45 + 5) * 100) / 100;
-  const duration = Math.round(distance * 2.2); // Approximate 2.2 minutes per km
-  return { distance, duration };
-}
-
 export async function registerRoutes(app: Express): Promise<Server> {
-  // Calculate distance and price
-  app.post("/api/calculate-route", async (req, res) => {
-    try {
-      const { startAddress, endAddress } = req.body;
-      
-      if (!startAddress || !endAddress) {
-        return res.status(400).json({ message: "Start and end addresses are required" });
-      }
-
-      const { distance, duration } = calculateDistance(startAddress, endAddress);
-      const totalPrice = calculatePrice(distance);
-
-      res.json({
-        distance,
-        duration,
-        totalPrice: totalPrice.toFixed(2)
-      });
-    } catch (error) {
-      res.status(500).json({ message: "Error calculating route" });
-    }
-  });
-
+  
   // Create booking
   app.post("/api/bookings", async (req, res) => {
     try {
       const validatedData = insertBookingSchema.parse(req.body);
       
-      // Calculate route details
-      const { distance, duration } = calculateDistance(validatedData.startAddress, validatedData.endAddress);
-      const totalPrice = calculatePrice(distance);
-
-      const booking = await storage.createBooking({
-        ...validatedData,
-        distance: distance.toString(),
-        duration,
-        totalPrice: totalPrice.toFixed(2)
-      });
+      const booking = await storage.createBooking(validatedData);
 
       res.status(201).json(booking);
     } catch (error) {
@@ -125,7 +81,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       if (error instanceof z.ZodError) {
         res.status(400).json({ message: "Validation error", errors: error.errors });
       } else {
-        res.status(500).json({ message: "Error sending message" });
+        res.status(500).json({ message: "Error creating contact message" });
       }
     }
   });
@@ -140,6 +96,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  const httpServer = createServer(app);
-  return httpServer;
+  const server = createServer(app);
+  return server;
 }

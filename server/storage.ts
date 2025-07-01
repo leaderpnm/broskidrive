@@ -5,7 +5,7 @@ export interface IStorage {
   getUserByUsername(username: string): Promise<User | undefined>;
   createUser(user: InsertUser): Promise<User>;
   
-  createBooking(booking: InsertBooking & { distance?: string; duration?: number; totalPrice: string }): Promise<Booking>;
+  createBooking(booking: InsertBooking): Promise<Booking>;
   getBooking(id: number): Promise<Booking | undefined>;
   getAllBookings(): Promise<Booking[]>;
   updateBookingStatus(id: number, status: string): Promise<Booking | undefined>;
@@ -48,7 +48,7 @@ export class MemStorage implements IStorage {
     return user;
   }
 
-  async createBooking(insertBooking: InsertBooking & { distance?: string; duration?: number; totalPrice: string }): Promise<Booking> {
+  async createBooking(insertBooking: InsertBooking): Promise<Booking> {
     const id = this.currentBookingId++;
     const booking: Booking = {
       ...insertBooking,
@@ -82,6 +82,7 @@ export class MemStorage implements IStorage {
     const id = this.currentMessageId++;
     const message: ContactMessage = {
       ...insertMessage,
+      phone: insertMessage.phone || null,
       id,
       createdAt: new Date(),
     };
