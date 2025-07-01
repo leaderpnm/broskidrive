@@ -9,7 +9,7 @@ interface CalendlyWidgetProps {
 export default function CalendlyWidget({ 
   url = "https://calendly.com/leaderpaname/30min",
   minWidth = "320px",
-  height = "700px"
+  height = "900px"
 }: CalendlyWidgetProps) {
   useEffect(() => {
     // Load Calendly script if not already loaded
@@ -26,7 +26,7 @@ export default function CalendlyWidget({
     <div 
       className="calendly-inline-widget" 
       data-url={url}
-      style={{ minWidth, height }}
+      style={{ minWidth, height, overflow: 'visible' }}
     />
   );
 }
